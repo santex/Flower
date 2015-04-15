@@ -1,10 +1,15 @@
 #!/bin/bash
 IFS=$'\n';
 
+### ### ###
+apt-get -y install vim
+apt-get -y install make
+apt-get -y install gcc
+### ### ###
 
-apt-get install memcached
-
-apt-get install cpanm
+apt-get -y install curl
+apt-get -y install memcached
+apt-get -y install cpanminus
 
 curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
 
