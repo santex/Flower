@@ -15,3 +15,4 @@ git clone https://github.com/santex/flower.git
 
 cd flower;
 
+cpanm .
