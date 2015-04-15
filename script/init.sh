@@ -3,6 +3,7 @@ IFS=$'\n';
 
 ### ### ###
 apt-get -y install vim
+apt-get -y install git
 apt-get -y install make
 apt-get -y install gcc
 ### ### ###
