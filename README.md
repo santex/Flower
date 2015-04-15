@@ -1,3 +1,5 @@
+#!/bin/bash
+IFS=$'\n';
 
 
 apt-get install memcached
@@ -17,4 +19,4 @@ pwd=$(pwd);
 
 nohup  perl script/perl_peer --ip $ip --filepath "$pwd/data" &
 
-tail nohup &
+tail nohup.out &
