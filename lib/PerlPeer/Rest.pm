@@ -4,11 +4,11 @@ use strict;
 use warnings;
 
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::JSON;
+use JSON;
 
 use Number::Format qw/format_bytes/;
 
-my $json = Mojo::JSON->new();
+my $json = JSON->new();
 
 # respond to a ping
 sub ping {
