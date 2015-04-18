@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 use Mojo::UserAgent;
-use JSON;
+use JSON::XS;
 use Mojo::ByteStream qw/b/;
 use AnyEvent;
 use Scalar::Util qw/refaddr/;
@@ -19,7 +19,9 @@ use Data::UUID;
 
 my $uuid    = Data::UUID->new();
 my $timeout = 60;
-my $json    = JSON->new();
+my $json    = JSON::XS->new->allow_nonref;
+
+
 
 sub new {
   my $class = shift;
@@ -108,10 +110,10 @@ sub ping_if_necessary {
 
   # ping if less than half of our timeout is left
   if ( $self->{timeout} - $timeout / 2 < time() ) {
-
+    if($self && $self->ip &&  $self->port)   {
     my $url = "https://" . $self->ip . ":" . $self->port . "/REST/1.0/ping?";
-    print $all_nodes
-    my $nodedata = encode_json $all_nodes;
+    
+    my $nodedata = $json->encode($all_nodes);
 
     $self->{ping_ua} = Mojo::UserAgent->new;
     $self->{ping_cv} = AE::cv;
@@ -132,6 +134,7 @@ sub ping_if_necessary {
       }
     );
   }
+}
 }
 
 sub ping_received {
