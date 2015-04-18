@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Mojo::Base 'Mojolicious';
-
+  
 use Mojo::Server::Daemon;
 use EV;
 use AnyEvent;
@@ -22,7 +22,7 @@ sub startup {
 
   # RESTful routes
   # routes for the remote nodes to hit
-  $r->route('/REST/1.0/ping')->via(qw/POST/)->to('rest#ping');
+  $r->route('/REST/1.0/ping')->to('rest#ping');
   $r->route('/REST/1.0/files')->to('rest#files');
   $r->route('/REST/1.0/file/:uuid')->to('rest#file_get_by_uuid');
 
