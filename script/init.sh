@@ -23,7 +23,7 @@ dzil test;
 dzil install;
 
 
-#git clone https://github.com/santex/flower.git
+git clone https://github.com/santex/flower.git
 cd flower;
 
 perl Makefile.PL;
