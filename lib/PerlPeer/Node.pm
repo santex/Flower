@@ -10,7 +10,7 @@ use JSON::XS;
 use Mojo::ByteStream qw/b/;
 use AnyEvent;
 use Scalar::Util qw/refaddr/;
-
+use feature qw(say switch);
 use Carp qw/confess/;
 
 use overload '""' => \&to_string;
@@ -19,7 +19,7 @@ use Data::UUID;
 
 my $uuid    = Data::UUID->new();
 my $timeout = 60;
-my $json    = JSON::XS->new->allow_nonref;
+my $json    = JSON::XS->new->allow_nonref();
 
 
 

@@ -4,12 +4,13 @@ use strict;
 use warnings;
 use Data::Printer;
 use Mojo::Base 'Mojolicious::Controller';
-use JSON;
+use JSON::XS;
 
 use Number::Format qw/format_bytes/;
 
-my $json = JSON->new();
+my $json    = JSON::XS->new->allow_nonref;
 
+#my $json    = JSON::XS->new->allow_nonref();
 # respond to a ping
 sub ping {
   my $self   = shift;
@@ -67,46 +68,6 @@ sub files_all {
     }
   );
 
-}
-
-sub file_get_by_uuid {
-    my $self   = shift;
-    my $uuid   = shift;
-    p $uuid;  
-    
-  my $config = $self->config;
-  my $stats  = {};
-
-
-  my @all_files = ();
-  foreach my $node ( $config->{nodes}->list ) {
-  
-    if($node->uuid=~/$uuid/){
-    $stats->{total_nodes}++;
-    
-      push @all_files, $f->filename ;
-    }
-    
-    
-  }
-
-  $stats->{total_files} = scalar @all_files;
-  $stats->{total_bytes} += $_->{size} foreach @all_files;
-
-  $stats->{$_} = format_bytes( $stats->{$_} )
-    foreach (qw/total_files total_bytes/);
-
-  # sort for presentation
-  # newest at the top
-  
-
-  $self->render(
-    json => {
-      result => 'ok',
-      files  => \@all_files,
-      stats  => $stats
-    }
-  );
 }
 
 1;

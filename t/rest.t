@@ -13,7 +13,7 @@ my $uuid = $t->app->config->{nodes}->self->uuid;
 
 ok ($uuid, 'uuid exists');
 
-$t->post_ok('/REST/1.0/ping')
+$t->post_ok ('/REST/1.0/ping')
   ->status_is(200)
   ->content_type_is('application/json')
   ->json_is({'result' => 'ok', uuid => $uuid});
