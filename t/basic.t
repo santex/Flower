@@ -13,4 +13,4 @@ $t->app->config->{nodes}->self->set_files(Flower::Files->new());
 
 $t->get_ok('/')
   ->status_is(200)
-  ->content_like(qr/perlpeer/i);
+  ->content_like(qr/flower/i);
