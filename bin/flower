@@ -1,0 +1,74 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+
+use lib '../lib', 'lib';
+use Mojo::Base -strict;
+use File::Basename 'dirname';
+use File::Spec::Functions 'splitdir';
+use Flower;
+use Mojo::Server::Daemon;
+use AnyEvent;
+use EV;
+use Getopt::Long;
+use Flower::Files;
+use Flower::Nodes;
+
+push @INC, join('/', splitdir(dirname(__FILE__)), '..', 'lib');
+
+# Check if Mojolicious is installed;
+die <<EOF unless eval 'use Mojolicious::Commands; 1';  ## no critic
+It looks like you don't have the Mojolicious framework installed.
+Please visit http://mojolicio.us for detailed installation instructions.
+
+EOF
+
+# Application
+$ENV{MOJO_APP} ||= 'Flower';
+
+# Command line options
+
+my $ip;
+my $port = 2222;
+my $filepath;
+
+my $result = GetOptions ("ip=s"    => \$ip,
+       "port=i"  => \$port,
+       "filepath=s" => \$filepath);
+
+die "need --ip" unless $ip;
+die "need --filepath" unless $filepath;
+die "$filepath is not a directory" unless -d $filepath;
+
+# Create the Files and Nodes handlers
+my $nodes = Flower::Nodes->new($ip, $port);
+my $files = Flower::Files->new();
+$nodes->self->set_files($files);
+
+# Add our local files
+$files->update_all_in_path($filepath);
+
+# Remind us who we are
+say "We are " . $nodes->self();
+
+# Add any more nodes
+while (my $arg = shift) {
+  my ($ip, $port) = split /:/, $arg;
+  $nodes->add_if_necessary( { ip => $ip, port => $port } );
+}
+
+# Initialise the app and daemon.
+my $app = Flower->new();
+
+$app->config->{ nodes } = $nodes;
+
+my $daemon = Mojo::Server::Daemon->new(app => $app, listen => ['https://*:'.$port]);
+$daemon->start;
+
+# Start EV stuff
+my $nodes_timer = AE::timer  3,  10, sub { $nodes->update() };
+my $files_timer = AE::timer 20, 30, sub { $files->update_all_in_path($filepath) };
+
+my $cv = AE::cv;
+$cv->recv;
