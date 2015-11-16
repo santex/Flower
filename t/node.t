@@ -1,21 +1,21 @@
 use Test::More tests => 14;
 
-use_ok 'PerlPeer::Node';
-use lib;
-eval { my $node = PerlPeer::Node->new(); };
+use_ok 'Flower::Node';
+
+eval { my $node = Flower::Node->new(); };
 ok ($@, "empty constructor not allowed");
 
-eval { my $node = PerlPeer::Node->new({ip => '1.1.1.1', port => 80}); };
+eval { my $node = Flower::Node->new({ip => '1.1.1.1', port => 80}); };
 ok ($@ =~ /parent/, "require parent");
 
 
-eval { my $node = PerlPeer::Node->new({parent => {}, port => 80}); };
+eval { my $node = Flower::Node->new({parent => {}, port => 80}); };
 ok ($@ =~ /ip/, "require ip");
 
-eval { my $node = PerlPeer::Node->new({parent => {}, ip => '1.1.1.1'}); };
+eval { my $node = Flower::Node->new({parent => {}, ip => '1.1.1.1'}); };
 ok ($@ =~ /port/, "require port");
 
-my $node = PerlPeer::Node->new({parent => {}, ip => '1.1.1.1', port => 80});
+my $node = Flower::Node->new({parent => {}, ip => '1.1.1.1', port => 80});
 ok ($node =~ /1.1.1.1/,   'stringification');
 ok ($node =~ /80/  ,      'stringification');
 ok ($node =~ /\[undef\]/, 'stringification (empty uuid)');

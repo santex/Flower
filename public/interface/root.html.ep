@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function() {
   update_files();
-  setInterval("update_files()", 5000);
+  setInterval("update_files()", 60000);
 });
 
 function update_files() {

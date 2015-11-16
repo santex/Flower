@@ -13,9 +13,9 @@ PerlPeer is not yet operational.
   cd PerlPeer
   perl Makefile.PL
   make
- mojo get -M POST -c 'bob' 172.22.99.165:2222/REST/1.0/ping
- Then visit L<http://127.0.0.1:2222> in your browser.
+  script/perl_peer <your-ip-address> 2222
 
+Then visit L<http://127.0.0.1:2222> in your browser.
 
 =head1 AUTHOR
 
