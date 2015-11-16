@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Welcome to PerlPeer';
+% title 'Welcome to Flower';
 
 <h2>Perl Peer mesh file list</h2>
 
@@ -7,7 +7,7 @@
 
 <table class="files"></table>
 
-<script src="/js/jquery.js"></script>
+<script src="js/jquery.js"></script>
 <script>
 $(document).ready(function() {
   update_files();
