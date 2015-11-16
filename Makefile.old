@@ -14,7 +14,7 @@
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
 #     NAME => q[Flower]
-#     PREREQ_PM => { Digest::MD5=>q[0.01], AnyEvent=>q[6.14], Time::Piece=>q[0.01], EV=>q[4.11], Number::Format=>q[1.73], JSON=>q[0.01], Time::Duration=>q[1.06], Mojolicious=>q[2.50], Encode=>q[0.01], Data::UUID=>q[1.217] }
+#     PREREQ_PM => { Time::Duration=>q[1.06], Number::Format=>q[1.73], Encode=>q[0.01], EV=>q[4.11], AnyEvent=>q[6.14], Mojolicious=>q[2.50], Digest::MD5=>q[0.01], JSON=>q[0.01], Data::UUID=>q[1.217], Time::Piece=>q[0.01] }
 #     TEST_REQUIRES => {  }
 #     VERSION => q[0.01]
 #     test => { TESTS=>q[t/*.t] }
@@ -906,13 +906,13 @@ ppd :
 	$(NOECHO) $(ECHO) '    <ABSTRACT></ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR></AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="AnyEvent::" VERSION="6.14" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="1.217" NAME="Data::UUID" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Digest::MD5" VERSION="0.01" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="6.14" NAME="AnyEvent::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Data::UUID" VERSION="1.217" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="0.01" NAME="Digest::MD5" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="4.11" NAME="EV::" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Encode::" VERSION="0.01" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::" VERSION="0.01" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="2.5" NAME="Mojolicious::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Mojolicious::" VERSION="2.5" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="1.73" NAME="Number::Format" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="1.06" NAME="Time::Duration" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="0.01" NAME="Time::Piece" />' >> $(DISTNAME).ppd
