@@ -22,6 +22,7 @@ sub startup {
 
   # RESTful routes
   # routes for the remote nodes to hit
+  #$r->route('/REST/1.0/:file')->to('upload#store');
   $r->route('/REST/1.0/ping')->via(qw/POST/)->to('rest#ping');
   $r->route('/REST/1.0/files')->to('rest#file_get_by_uuid');
   $r->route('/REST/1.0/file/:uuid')->to('rest#files');
@@ -33,6 +34,7 @@ sub startup {
 
 
 }
+
 
 1;
 # ABSTRACT: your pasive agent arround the web

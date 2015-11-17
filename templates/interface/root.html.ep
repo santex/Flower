@@ -1,35 +1,238 @@
 % layout 'default';
 % title 'Welcome to Flower';
 
-<h2>Perl Peer mesh file list</h2>
 
-<table class="stats"></table>
+<!DOCTYPE html>
+<html>
+<head>
 
-<table class="files"></table>
+  <link rel="stylesheet" media="all" href="/assets/main.css" data-turbolinks-track="true" />
 
-<script src="js/jquery.js"></script>
-<script>
-$(document).ready(function() {
-  update_files();
-  setInterval("update_files()", 5000);
-});
 
-function update_files() {
-  $.getJSON("/REST/1.0/files/all", function(result) {
-    $(".files").empty();
-    $(".files").append("<tr><th>filename</th><th>size</th><th>age</th></tr>");
-    // should check this is ok - result.result
-    $.each(result.files, function(i, a_file) {
-      $(".files").append("<tr><td>" + a_file.filename + "</td>" +
-       "<td>" + a_file.nice_size + "</td>" +
-       "<td>" + a_file.age + "</td></tr>");
-    $(".stats").empty();
-    $(".stats").append("<tr><th>Nodes</th><th>Files</th><th>Bytes</th></tr>");
-    $(".stats").append("<tr><td>" + result.stats.total_nodes + "</td>" +
-      "<td>" + result.stats.total_files + "</td>" +
-      "<td>" + result.stats.total_bytes + "</td></tr>");
-    });
-  });
-}
+  <script src="/assets/js/jquery.js" data-turbolinks-track="true"></script>
+  <script src="/assets/application-690f9f40684f3d7f05f40b76cfe4af2538c70fd9af8260477b9941c0c3b96d66.js" data-turbolinks-track="true"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,300%7CRoboto:400,300,500' rel='stylesheet' type='text/css'>
 
-</script>
+</head>
+<body>
+<div class="app-header">
+  <div class="container">
+    <div class="item">
+      <a href="/" class="branding">
+        <img style="border:0;" class="icon" alt="Flower" src="/assets/icon-79cdb85a926d14711db2851ada65b812b49ae8710025b2f6f9f080f8ffd85e24.png" /><img style="border:0;" class="logo" alt="Flower" src="/assets/logo-59638bd36fde4e01c12dfaf74f72b869dc3d7828c1a3793e7f5daf3267f19120.png" />
+      </a>
+    </div>
+
+    <div data-react-class="Auth.Logout" data-react-props="{}"></div>
+    <div data-react-class="Auth.Login" data-react-props="{}"></div>
+  </div>
+</div>
+
+<div class="header-push"></div>
+
+<div class="homepage">
+
+  <div class="splash">
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns">
+          <h1 class="animated fadeIn">A better way.</h1>
+        </div>
+        <div class="ten columns offset-by-one">
+          <div class="tech-icons">
+            <img style="border:0;" class="delay-8" src="/assets/angular-79a54baec007b468c454cfd5943f9c4757756a0072e515578c8f0dcb963c673a.png" alt="Angular 79a54baec007b468c454cfd5943f9c4757756a0072e515578c8f0dcb963c673a" />
+            <img style="border:0;" class="delay-1" src="/assets/react-ba91fe0d206f0a7717f63e944432c3d95722cb25f659b6a3b21e159ef3e752ae.png" alt="React ba91fe0d206f0a7717f63e944432c3d95722cb25f659b6a3b21e159ef3e752ae" />
+            <img style="border:0;" class="delay-85" src="/assets/mean-6ee2c906ec25110842a671c45684fa172e9ccf15c76126ac9ed10fe7f3fc7045.png" alt="Mean 6ee2c906ec25110842a671c45684fa172e9ccf15c76126ac9ed10fe7f3fc7045" />
+            <img style="border:0;" class="delay-95" src="/assets/ionic-icon-174157e43e36d811b2e1010357bee7046105944b35765e947fe3184ccb15517b.png" alt="Ionic icon 174157e43e36d811b2e1010357bee7046105944b35765e947fe3184ccb15517b" />
+            <img style="border:0;" class="delay-9" src="/assets/swift-dfb89dc0967799769a7f4551a22b0db9e7a04a81ade8e5807ddfd1e9474ab06c.png" alt="Swift dfb89dc0967799769a7f4551a22b0db9e7a04a81ade8e5807ddfd1e9474ab06c" />
+          </div>
+        </div>
+        <div class="twelve columns">
+          <h5>Supercharge your knowledge <span class="breaker">by using <b>pasive web &amp; mobile agents.</span></h5>
+        </div>
+        <div class="six columns offset-by-three">
+          <a href="#start-learning" class="getstarted">start learning &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="start-now" id="start-learning">
+    <div class="container">
+      <div class="row">
+
+        <div class="twelve columns">
+          <h5>Choose a technology. Start learning <b>right now</b>.</h5>
+        </div>
+
+      </div>
+
+
+      <div class="row card-list">
+        <div class="four columns">
+          <a href="/topics/angular" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/angular-79a54baec007b468c454cfd5943f9c4757756a0072e515578c8f0dcb963c673a.png" alt="Angular 79a54baec007b468c454cfd5943f9c4757756a0072e515578c8f0dcb963c673a" />
+            <h5>AngularJS</h5>
+            <p>Learn how to build fully fledged single page web apps (SPAs).</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+
+        <div class="four columns">
+          <a href="/topics/react" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/react-ba91fe0d206f0a7717f63e944432c3d95722cb25f659b6a3b21e159ef3e752ae.png" alt="React ba91fe0d206f0a7717f63e944432c3d95722cb25f659b6a3b21e159ef3e752ae" />
+            <h5>React</h5>
+            <p>Create web and mobile applications with reusable components</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+
+        <div class="four columns">
+          <a href="/topics/mean" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/mean-6ee2c906ec25110842a671c45684fa172e9ccf15c76126ac9ed10fe7f3fc7045.png" alt="Mean 6ee2c906ec25110842a671c45684fa172e9ccf15c76126ac9ed10fe7f3fc7045" />
+            <h5>MEAN Stack</h5>
+            <p>Build full stack web apps with MongoDB, Express, Angular and Node.</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="row card-list">
+
+        <div class="four columns">
+          <a href="/topics/ionic" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/ionic-938b67dd328a33028f60d03ba0bdcaae524f5a432bfb070a073d5f48d80f92e0.png" alt="Ionic 938b67dd328a33028f60d03ba0bdcaae524f5a432bfb070a073d5f48d80f92e0" />
+            <h5>Ionic</h5>
+            <p>Make native-feeling iOS and Android apps with AngularJS.</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+
+
+        <div class="four columns">
+          <a href="/topics/rails" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/rails-279640e170d349241da0bb6e5daa64602b0beccd7eb12abe1adf7b75e6c341fd.png" alt="Rails 279640e170d349241da0bb6e5daa64602b0beccd7eb12abe1adf7b75e6c341fd" />
+            <h5>Rails</h5>
+            <p>Integrate Rails with popular frontend Javascript frameworks.</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+
+        <div class="four columns">
+          <a href="/topics/firebase" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/firebase-53aea73bfceebb876e718d35fb1c711d2aa4006b2beb63786a72be87332d9b15.png" alt="Firebase 53aea73bfceebb876e718d35fb1c711d2aa4006b2beb63786a72be87332d9b15" />
+            <h5>Firebase</h5>
+            <p>Build real-time web and mobile applications that scale.</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="row card-list">
+        <div class="four columns">
+          <a href="/topics/swift" class="tech-card">
+            <img style="border:0;" class="logo" src="/assets/swift-dfb89dc0967799769a7f4551a22b0db9e7a04a81ade8e5807ddfd1e9474ab06c.png" alt="Swift dfb89dc0967799769a7f4551a22b0db9e7a04a81ade8e5807ddfd1e9474ab06c" />
+            <h5>Swift</h5>
+            <p>Master the new language used for building iOS and Mac apps.</p>
+            <i class="ion-ios-arrow-thin-right"></i>
+          </a>
+        </div>
+        <div class="eight columns" style="text-align:center;padding-top:120px;font-weight:500;font-size:2.5rem">
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container why-us">
+  <div class="row">
+
+    <h2>Perl Peer mesh file list</h2>
+
+  </div>
+</div>
+
+<div class="container quote">
+  <div class="row">
+
+    <div class="six columns"><table class="stats"></table></div>
+    <div class="six columns"><table class="files"></table></div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+
+      <div class="six columns offset-by-one sharer">
+        Help us educate millions of people around the world for free&nbsp;&nbsp;<i class="ion-heart heart"></i>
+        <div data-react-class="Global.FollowButton" data-react-props="{}"></div>
+      </div>
+
+      <div class="four columns map">
+        <div class="links">
+          <a href="/">Home</a>
+          <a href="/#start-learning">Topics</a>
+          <a href="/pro">Pro</a>
+          <a href="/about">About</a>
+          <a href="mailto:hello@Flower.io">Contact Us</a>
+        </div>
+        <div class="legal">
+        <span class="copy">&copy; 2015 Flower</span>
+        <a href="/privacy-policy">Privacy Policy</a> | <a href="/tos">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div data-react-class="Global.Modal" data-react-props="{}"></div>
+<div data-react-class="Global.Snackbar" data-react-props="{}"></div>
+
+
+
+
+          <script>
+          $(document).ready(function() {
+            update_files();
+            setInterval("update_files()", 5000);
+          });
+
+          function update_files() {
+            $.getJSON("/REST/1.0/files/all", function(result) {
+              $(".files").empty();
+              $(".files").append("<tr><th>filename</th><th>size</th><th>age</th></tr>");
+              // should check this is ok - result.result
+              $.each(result.files, function(i, a_file) {
+                $(".files").append("<tr><td>" + a_file.filename + "</td>" +
+                 "<td>" + a_file.nice_size + "</td>" +
+                 "<td>" + a_file.age + "</td></tr>");
+              $(".stats").empty();
+              $(".stats").append("<tr><th>Nodes</th><th>Files</th><th>Bytes</th></tr>");
+              $(".stats").append("<tr><td>" + result.stats.total_nodes + "</td>" +
+                "<td>" + result.stats.total_files + "</td>" +
+                "<td>" + result.stats.total_bytes + "</td></tr>");
+              });
+            });
+          }
+
+        </script>
+
+
+</body>
+</html>
