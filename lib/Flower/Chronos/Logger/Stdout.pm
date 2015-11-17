@@ -4,14 +4,16 @@ use strict;
 use warnings;
 
 use base 'Flower::Chronos::Logger::Base';
-
-use JSON ();
+#use Data::Printer;
+#use JSON ();
 
 sub log {
     my $self = shift;
     my ($info) = @_;
 
-    print JSON::encode_json($info), "\n";
+    return $info;
+
+
 }
 
 1;

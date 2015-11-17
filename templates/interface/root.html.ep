@@ -9,7 +9,7 @@
   <link rel="stylesheet" media="all" href="/assets/main.css" data-turbolinks-track="true" />
 
 
-  <script src="/assets/js/jquery.js" data-turbolinks-track="true"></script>
+
   <script src="/assets/application-690f9f40684f3d7f05f40b76cfe4af2538c70fd9af8260477b9941c0c3b96d66.js" data-turbolinks-track="true"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
@@ -206,7 +206,7 @@
 
 
 
-
+<script src="/assets/jquery.js"></script>
           <script>
           $(document).ready(function() {
             update_files();

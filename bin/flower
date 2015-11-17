@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -X
 
 use strict;
 use warnings;
@@ -11,11 +11,22 @@ use Flower;
 use Mojo::Server::Daemon;
 use AnyEvent;
 use EV;
+use JSON;
 use Getopt::Long;
 use Flower::Files;
 use Flower::Nodes;
+use Flower::Chronos;
+use File::Which 'which';
+use Data::Dumper;
+use Data::Printer;
+
+
 
 push @INC, join('/', splitdir(dirname(__FILE__)), '..', 'lib');
+my @paths = which('xprintidle');
+if (!@paths) {
+    die "xprintidle is not installed";
+}
 
 # Check if Mojolicious is installed;
 die <<EOF unless eval 'use Mojolicious::Commands; 1';  ## no critic
@@ -33,7 +44,7 @@ my $ip;
 my $port = 2222;
 my $filepath;
 
-my $result = GetOptions ("ip=s"    => \$ip,
+our $opts = GetOptions ("ip=s"    => \$ip,
        "port=i"  => \$port,
        "filepath=s" => \$filepath);
 
@@ -58,6 +69,15 @@ while (my $arg = shift) {
   $nodes->add_if_necessary( { ip => $ip, port => $port } );
 }
 
+
+
+my $chronos = Flower::Chronos->new(
+        logger        => 'stdout',
+        idle_timeout  => 3600*24,
+        flush_timeout => 3600*24
+    );
+
+
 # Initialise the app and daemon.
 my $app = Flower->new();
 
@@ -67,8 +87,20 @@ my $daemon = Mojo::Server::Daemon->new(app => $app, listen => ['https://*:'.$por
 $daemon->start;
 
 # Start EV stuff
-my $nodes_timer = AE::timer  3,  10, sub { $nodes->update() };
-my $files_timer = AE::timer 20, 30, sub { $files->update_all_in_path($filepath) };
+my $nodes_timer = AE::timer 5, 10, sub { $nodes->update() };
+my $files_timer = AE::timer 5, 30, sub { $files->update_all_in_path($filepath) };
+
+my $activity_timer = AE::timer 5, 1, sub {
+  my $last = $chronos->{last};
+
+  if($chronos->{t_end} < $last->{_end})
+  {
+    my $json_text = JSON->new->utf8(1)->pretty(1)->encode($chronos->{last});
+    print $json_text;
+    $chronos->{t_end} =  $last->{_end};
+  }
+  $chronos->track;
+};
 
 my $cv = AE::cv;
 $cv->recv;

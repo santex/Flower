@@ -98,7 +98,6 @@ sub nodes_as_hashref {
 
 sub update {
   my $self = shift;
-  use Data::Dumper;
 
   foreach my $node ( @{ $self->{nodes} } ) {
 
