@@ -1,4 +1,4 @@
-#!/usr/bin/perl -X
+#!/usr/bin/perl -w
 
 use strict;
 use warnings;
@@ -19,6 +19,10 @@ use Flower::Chronos;
 use File::Which 'which';
 use Data::Dumper;
 use Data::Printer;
+use Mojo::UserAgent;
+
+my $ua = Mojo::UserAgent->new;
+
 
 
 
@@ -86,6 +90,8 @@ $app->config->{ nodes } = $nodes;
 my $daemon = Mojo::Server::Daemon->new(app => $app, listen => ['https://*:'.$port]);
 $daemon->start;
 
+
+my $x = 1;
 # Start EV stuff
 my $nodes_timer = AE::timer 5, 10, sub { $nodes->update() };
 my $files_timer = AE::timer 5, 30, sub { $files->update_all_in_path($filepath) };
@@ -95,8 +101,20 @@ my $activity_timer = AE::timer 5, 1, sub {
 
   if($chronos->{t_end} < $last->{_end})
   {
-    my $json_text = JSON->new->utf8(1)->pretty(1)->encode($chronos->{last});
-    print $json_text;
+
+        # insert a record
+        # insert a record
+$chronos->{last}->{user} = "app";
+my $json_text = JSON::encode_json($chronos->{last});
+my $tx = $ua->post('http://localhost:9200/flower/rows/'.$chronos->{last}->{_end} => json =>
+$chronos->{last}
+ => sub {
+    my ($ua, $tx) = @_;
+      say $tx->res->body;
+    });
+
+    $x++;
+    #print $json_text;
     $chronos->{t_end} =  $last->{_end};
   }
   $chronos->track;
