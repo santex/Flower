@@ -96,7 +96,7 @@ my $x = 1;
 my $nodes_timer = AE::timer 5, 10, sub { $nodes->update() };
 my $files_timer = AE::timer 5, 30, sub { $files->update_all_in_path($filepath) };
 
-my $activity_timer = AE::timer 5, 1, sub {
+  my $activity_timer = AE::timer 5, 1, sub {
   my $last = $chronos->{last};
 
   if($chronos->{t_end} < $last->{_end})
