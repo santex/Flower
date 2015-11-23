@@ -4,7 +4,7 @@ Flower - pasive agent
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =head1 SYNOPSIS
 
@@ -33,7 +33,7 @@ use Mojo::Server::Daemon;
 use EV;
 use AnyEvent;
 use Data::UUID;
-
+use Mojolicious::Plugin::SimpleSession;
 # This method will run once at server start
 sub startup {
   my $self = shift;
