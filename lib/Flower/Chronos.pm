@@ -63,6 +63,10 @@ __END__
 
 Flower::Chronos - automatic time tracking application
 
+=head1 VERSION
+
+Version 0.06
+
 =head1 SYNOPSIS
 
   use Flower::Chronos;
@@ -88,7 +92,7 @@ Flower is not yet operational.
   make
   script/flower <your-ip-address> 2222
 
-Then visit L<http://127.0.0.1:2222> in your browser.
+Then visit L<https://127.0.0.1:2222> in your browser.
 
 =head1 AUTHOR
 

@@ -4,7 +4,7 @@ Flower - pasive agent
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =head1 SYNOPSIS
 
