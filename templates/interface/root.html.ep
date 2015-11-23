@@ -35,11 +35,6 @@
         </div>
         <div class="ten columns offset-by-one">
           <div class="tech-icons">
-            <img style="border:0;" class="delay-8" src="/assets/img/angular.png" alt="Angular" />
-            <img style="border:0;" class="delay-1" src="/assets/img/react.png" alt="React" />
-            <img style="border:0;" class="delay-85" src="/assets/img/mean.png" alt="Mean" />
-            <img style="border:0;" class="delay-95" src="/assets/img/ionic-icon.png" alt="Ionic icon" />
-            <img style="border:0;" class="delay-9" src="/assets/img/swift.png" alt="Swift" />
           </div>
         </div>
         <div class="twelve columns">
