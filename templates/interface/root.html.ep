@@ -51,7 +51,8 @@
       </div>
     </div>
   </div>
-  <div class="start-now" id="start-learning">
+  <!---//
+  div class="start-now" id="start-learning">
     <div class="container">
       <div class="row">
         <div class="twelve columns">
@@ -124,7 +125,8 @@
       </div>
     </div>
   </div>
-</div>
+</div
+//-->
 <div class="container why-us">
   <div class="row">
     <h2>Perl Peer mesh file list</h2>
