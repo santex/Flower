@@ -4,7 +4,7 @@ Flower - pasive agent
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 
 =head1 SYNOPSIS
@@ -19,6 +19,7 @@ Version 0.03
 
  perl $pwd"/bin/flower" --ip $ip --filepath $pwd"/data/"
 
+ Then visit L<https://127.0.0.1:2222> in your browser.
 
 =cut
 
