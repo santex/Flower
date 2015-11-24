@@ -4,9 +4,16 @@ Flower - passive agent
 
 =head1 VERSION
 
-Version 0.08
+Version 0.10
 
 =head1 SYNOPSIS
+
+ start up your elasticsearch
+
+ sudo /etc/init.d/elasticsearch start
+
+ now ready to go ahead
+
 
  git clone https://github.com/santex/Flower.git;
  cd Flower;
@@ -19,6 +26,11 @@ Version 0.08
  perl $pwd"/bin/flower" --ip $ip --filepath $pwd"/data/"
 
  Then visit L<https://127.0.0.1:2222> in your browser.
+
+ test urls passive log
+ L<https://127.0.0.1:2222/q/name>
+ L<https://127.0.0.1:2222/q/class>
+
 
 =cut
 

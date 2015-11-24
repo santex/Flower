@@ -1,34 +1,37 @@
-=head1 DESCRIPTION
+=head1 NAME
 
-Flower is a meshed P2P client running between trusted peers on a LAN
-or WAN network.
+Flower - passive agent
 
-=head1 STATUS
+=head1 VERSION
 
-Flower is not yet operational.
+Version 0.10
 
 =head1 SYNOPSIS
 
-    git clone https://github.com/santex/Flower.git;
-    cd Flower;
-    dzil build;
-    dzil test;
-    sudo dzil install;
-    pwd=$(pwd);
-    ip=127.0.0.1;
+ start up your elasticsearch
 
-    perl $pwd"/bin/flower" --ip $ip --filepath $pwd"/data/"
+ sudo /etc/init.d/elasticsearch start
+
+ now ready to go ahead
 
 
-Then visit L<https://127.0.0.1:2222> in your browser.
+ git clone https://github.com/santex/Flower.git;
+ cd Flower;
+ dzil build;
+ dzil test;
+ sudo dzil install;
+ pwd=$(pwd);
+ ip=127.0.0.1;
 
-=head1 AUTHOR
+ perl $pwd"/bin/flower" --ip $ip --filepath $pwd"/data/"
 
-Hagen Geissler, E<lt>santex@cpan.orgE<gt>
+ Then visit L<https://127.0.0.1:2222> in your browser.
 
-=head1 LICENSE
+ test urls passive log
+ L<https://127.0.0.1:2222/q/name>
+ L<https://127.0.0.1:2222/q/class>
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =cut
+
+

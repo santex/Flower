@@ -13,12 +13,13 @@
 
 </head>
 <body>
+<!--//
 <div class="app-header">
   <div class="container">
     <div class="item">
       <a href="/" class="branding">
         <img style="border:0;" class="icon" alt="Flower" src="/assets/img/icon.png" />
-        <img style="border:0;" class="logo" alt="Flower" src="/assets/img/logo.png" />
+
       </a>
     </div>
     <div data-react-class="Auth.Logout" data-react-props="{}"></div>
@@ -26,6 +27,7 @@
   </div>
 </div>
 <div class="header-push"></div>
+//-->
 <div class="homepage">
   <div class="splash">
     <div class="container">
