@@ -1,6 +1,6 @@
 =head1 NAME
 
-Flower - pasive agent
+Flower - passive agent
 
 =head1 VERSION
 
@@ -65,7 +65,7 @@ sub startup {
 
 
 1;
-# ABSTRACT: your pasive agent arround the web
+# ABSTRACT: your passive agent arround the web
 =head1 AUTHOR
 
 Hagen Geissler, C<< <santex at cpan.org> >>
