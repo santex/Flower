@@ -49,7 +49,7 @@ sub query {
   my $type = $self->param('type') || "class";
 
 
-  $self->ua->get('http://localhost:9200/_search?size=10000000&pretty=1' => sub {
+  $self->ua->get('http://localhost:9200/flower/rows/_search?size=10000000&pretty=1' => sub {
     my ($ua, $tx) = @_;
     my $hits = $tx->res->json->{hits}{hits};
     my $h = {};
